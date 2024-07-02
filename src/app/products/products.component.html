@@ -1,6 +1,14 @@
 <!-- <div *ngFor="let item of [1, 2, 3]">
   <p>Number is: {{ item }}</p>
 </div> -->
+<app-search></app-search>
+<div style="display: flex; justify-content: center">
+  <app-filter
+    [total]="getTotalProducts()"
+    [available]="getAvailableProducts()"
+    [notAvailable]="getNotAvailableProducts()"
+  ></app-filter>
+</div>
 <div class="products">
   <div *ngFor="let item of products">
     <div class="product-container">

@@ -45,4 +45,15 @@ export class ProductsComponent implements OnInit {
       available: 'Available',
     },
   ];
+  getTotalProducts() {
+    return this.products.length;
+  }
+  getAvailableProducts() {
+    return this.products.filter((item) => item.available === 'Available')
+      .length;
+  }
+  getNotAvailableProducts() {
+    return this.products.filter((item) => item.available !== 'Available')
+      .length;
+  }
 }

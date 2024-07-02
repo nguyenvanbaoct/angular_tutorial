@@ -13,15 +13,30 @@
       </div>
       <div>
         <div class="name-container">
-          <h6>{{ item.name }}</h6>
+          <h6
+            [ngStyle]="{
+              color: item.available === 'Available' ? 'green' : 'red'
+            }"
+          >
+            {{ item.name }}
+          </h6>
         </div>
         <div class="detail-container">
           <div class="details">${{ item.price }}</div>
+          <div class="details">{{ item.available }}</div>
         </div>
       </div>
       <div class="options">
-        <button class="btn btn-primary">Add to cart</button>
-        <button class="btn btn-warning">Buy now</button>
+        <button class="btn btn-primary">Show details</button>
+        <button
+          class="btn btn-warning"
+          *ngIf="item.available === 'Available'; else notifyme"
+        >
+          Buy now
+        </button>
+        <ng-template #notifyme>
+          <button class="btn btn-danger">Notify me</button>
+        </ng-template>
       </div>
     </div>
   </div>

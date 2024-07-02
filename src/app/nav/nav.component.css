@@ -1,0 +1,24 @@
+.navbar {
+  display: flex;
+  background-color: black;
+  justify-content: center;
+}
+.site-name {
+  padding: 5px 30px;
+  color: white;
+}
+.site-menu {
+  padding: 10px 30px;
+  margin-left: 100px;
+  display: flex;
+  align-items: center;
+}
+a {
+  text-decoration: none;
+  color: white;
+  margin: 10px;
+}
+a:hover {
+  color: gray;
+  transition: 0.3s;
+}

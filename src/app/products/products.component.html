@@ -1,0 +1,28 @@
+<!-- <div *ngFor="let item of [1, 2, 3]">
+  <p>Number is: {{ item }}</p>
+</div> -->
+<div class="products">
+  <div *ngFor="let item of products">
+    <div class="product-container">
+      <div class="image-container">
+        <img
+          src="{{ item.source }}"
+          style="max-width: 50px; max-height: 50px"
+          alt=""
+        />
+      </div>
+      <div>
+        <div class="name-container">
+          <h6>{{ item.name }}</h6>
+        </div>
+        <div class="detail-container">
+          <div class="details">${{ item.price }}</div>
+        </div>
+      </div>
+      <div class="options">
+        <button class="btn btn-primary">Add to cart</button>
+        <button class="btn btn-warning">Buy now</button>
+      </div>
+    </div>
+  </div>
+</div>

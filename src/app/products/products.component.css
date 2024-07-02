@@ -1,0 +1,43 @@
+.products {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-container {
+  display: flex;
+  margin: 15px 0px;
+  padding: 5px 5px;
+  border-radius: 5px;
+}
+
+.image-container {
+  height: 70px;
+  width: 70px;
+  padding: 10px 0px;
+  text-align: center;
+}
+
+.name-container {
+  margin: 0 20px;
+}
+
+.detail-container {
+  display: flex;
+  margin: 0 20px;
+}
+
+.details {
+  width: 140px;
+}
+
+.options {
+  width: 220px;
+  margin-left: 80px;
+}
+.btn {
+  border-radius: none;
+  max-width: 0 5px;
+  padding: 10px 15px;
+  font-size: 12px;
+  margin-right: 10px;
+}

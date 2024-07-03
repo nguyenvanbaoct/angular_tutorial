@@ -1,51 +1,61 @@
 <!-- <div *ngFor="let item of [1, 2, 3]">
   <p>Number is: {{ item }}</p>
 </div> -->
-<app-search></app-search>
+<app-search (searchTextChanged)="onSearchTextChanged($event)"></app-search>
 <div style="display: flex; justify-content: center">
   <app-filter
     [total]="getTotalProducts()"
     [available]="getAvailableProducts()"
     [notAvailable]="getNotAvailableProducts()"
+    (filterRadioButtonSelectionChange)="
+      onFilterRadioButtonSelectionChange($event)
+    "
   ></app-filter>
 </div>
-<div class="products">
-  <div *ngFor="let item of products">
-    <div class="product-container">
-      <div class="image-container">
-        <img
-          src="{{ item.source }}"
-          style="max-width: 50px; max-height: 50px"
-          alt=""
-        />
-      </div>
-      <div>
-        <div class="name-container">
-          <h6
-            [ngStyle]="{
-              color: item.available === 'Available' ? 'green' : 'red'
-            }"
+<ng-container *ngFor="let item of products">
+  <!-- productCountRadioButton === 'All' ||
+      productCountRadioButton === item.available -->
+  <div
+    class="products"
+    *ngIf="searchText === '' || item.name.toLowerCase().includes(searchText)"
+  >
+    <div>
+      <div class="product-container">
+        <div class="image-container">
+          <img
+            src="{{ item.source }}"
+            style="max-width: 50px; max-height: 50px"
+            alt=""
+          />
+        </div>
+        <div>
+          <div class="name-container">
+            <h6
+              [ngStyle]="{
+                color: item.available === 'Available' ? 'green' : 'red'
+              }"
+            >
+              {{ item.name }}
+            </h6>
+          </div>
+          <div class="detail-container">
+            <div class="details">${{ item.price }}</div>
+            <div class="details">{{ item.available }}</div>
+          </div>
+        </div>
+        <div class="options">
+          <button class="btn btn-primary">Show details</button>
+          <button
+            class="btn btn-warning"
+            *ngIf="item.available === 'Available'; else notifyme"
           >
-            {{ item.name }}
-          </h6>
+            Buy now
+          </button>
+          <ng-template #notifyme>
+            <button class="btn btn-danger">Notify me</button>
+          </ng-template>
         </div>
-        <div class="detail-container">
-          <div class="details">${{ item.price }}</div>
-          <div class="details">{{ item.available }}</div>
-        </div>
-      </div>
-      <div class="options">
-        <button class="btn btn-primary">Show details</button>
-        <button
-          class="btn btn-warning"
-          *ngIf="item.available === 'Available'; else notifyme"
-        >
-          Buy now
-        </button>
-        <ng-template #notifyme>
-          <button class="btn btn-danger">Notify me</button>
-        </ng-template>
       </div>
     </div>
   </div>
-</div>
+</ng-container>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-search',
@@ -11,5 +11,11 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {}
   searchValue: string = 'MacBook Pro';
 
-  // this.searchValue = (<HTMLInputElement>eventData.target).value;
+  // EventEmitter: dùng để bắt sự kiện từ componet child -> parent
+  @Output()
+  searchTextChanged: EventEmitter<string> = new EventEmitter<string>();
+
+  OnSearchTextChanged() {
+    this.searchTextChanged.emit(this.searchValue);
+  }
 }

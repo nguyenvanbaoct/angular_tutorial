@@ -28,14 +28,14 @@ export class ProductsComponent implements OnInit {
       name: 'MacBook Pro 15',
       source: '/assets/mac.jpg',
       price: 900,
-      available: 'Not Available',
+      available: 'NotAvailable',
     },
     {
       id: 3,
       name: 'MacBook Pro 13',
       source: '/assets/mac.jpg',
       price: 1500,
-      available: 'Not Available',
+      available: 'NotAvailable',
     },
     {
       id: 4,
@@ -55,5 +55,16 @@ export class ProductsComponent implements OnInit {
   getNotAvailableProducts() {
     return this.products.filter((item) => item.available !== 'Available')
       .length;
+  }
+
+  productCountRadioButton: string = 'All';
+  searchText: string = '';
+  onFilterRadioButtonSelectionChange(data: string) {
+    this.productCountRadioButton = data;
+  }
+
+  onSearchTextChanged(data: string) {
+    this.searchText = data;
+    console.log('data', this.searchText);
   }
 }

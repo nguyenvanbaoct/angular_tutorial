@@ -182,6 +182,60 @@ productCountRadioButton: string = 'All';
 
 ### ng-content
 
+### life-cycle
+```jsx
+ implements
+    OnInit,
+    OnChanges,
+    DoCheck,
+    AfterContentInit,
+    AfterContentChecked,
+    AfterViewInit,
+    AfterViewChecked,
+    OnDestroy
+{
+  constructor() {
+    console.log('Constructor called');
+    console.log(this.value);
+  }
+  @Input() value: string = 'Hello World';
+
+  // hàm này gọi khi value onChange thay đổi
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('ngOnChanges called');
+    console.log(changes);
+  }
+  // hàm này gọi khi lần đầu component được khởi tạo (tương tự useEffect [] trong react)
+  ngOnInit(): void {
+    console.log('ngOnInit called');
+  }
+  // hàm này gọi mỗi khi component có sự thay đổi (tương tự useEffect trong react)
+  ngDoCheck(): void {
+    console.log('ngDoCheck called');
+  }
+  // được gọi khi angular chèn nội dung vào view và gọi 1 lần sau ngDoCheck
+  ngAfterContentInit(): void {
+    console.log('ngAfterContentInit called');
+  }
+  // được khi sau mỗi lần sau ngDoCheck
+  ngAfterContentChecked(): void {
+    console.log('ngAfterContentChecked called');
+  }
+  // chỉ gọi khi angular khởi tạo view của component và các view con.
+  // chỉ gọi 1 lần sau affterContentChecked lần đầu.
+  ngAfterViewInit(): void {
+    console.log('ngAfterViewInit called');
+  }
+  // được gọi sau mỗi lần ngAfterViewInit
+  ngAfterViewChecked(): void {
+    console.log('ngAfterViewChecked called');
+  }
+  // được gọi trước khi component bị hủy
+  ngOnDestroy(): void {
+    console.log('ngOnDestroy called');
+  }
+```
+
 
 
 

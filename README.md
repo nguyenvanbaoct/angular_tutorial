@@ -235,6 +235,10 @@ productCountRadioButton: string = 'All';
     console.log('ngOnDestroy called');
   }
 ```
+### service
+injection
+nếu truyền trong app.module thì toàn bộ application đều nhận đc
+chỉ nhận được từ component parent->child
 
 
 
